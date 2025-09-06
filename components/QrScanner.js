@@ -1,6 +1,6 @@
 import { useEffect, useRef } from 'react';
 import jsQR from 'jsqr';
-import { QrReader } from 'react-qr-reader3';
+import { QrReader } from 'react-qr-reader';
 
 export default function QrScanner({ onScan }) {
   return (
