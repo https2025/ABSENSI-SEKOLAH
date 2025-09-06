@@ -1,6 +1,6 @@
 import { useEffect, useRef } from 'react';
 import jsQR from 'jsqr';
-import { QrReader } from 'react-qr-reader';
+import { QrScanner } from '@yudiel/react-qr-scanner';
 
 export default function QrScanner({ onScan }) {
   return (
