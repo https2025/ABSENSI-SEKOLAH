@@ -1,19 +1,5 @@
 import { useEffect, useRef } from 'react';
 import jsQR from 'jsqr';
-import { QrReader } from '@yudiel/react-qr-scanner';
-
-export default function QrScanner({ onScan }) {
-  return (
-    <QrReader
-      constraints={{ facingMode: 'environment' }}
-      onResult={(result, error) => {
-        if (result) onScan(result.text);
-      }}
-      style={{ width: '100%' }}
-    />
-  );
-}
-
 
 export default function QrScanner({ onScan }) {
   const videoRef = useRef(null);
@@ -21,7 +7,9 @@ export default function QrScanner({ onScan }) {
 
   useEffect(() => {
     const startCamera = async () => {
-      const stream = await navigator.mediaDevices.getUserMedia({ video: { facingMode: 'environment' } });
+      const stream = await navigator.mediaDevices.getUserMedia({
+        video: { facingMode: 'environment' },
+      });
       videoRef.current.srcObject = stream;
       videoRef.current.play();
       tick();
@@ -30,8 +18,8 @@ export default function QrScanner({ onScan }) {
     const tick = () => {
       const video = videoRef.current;
       const canvas = canvasRef.current;
-      const ctx = canvas.getContext('2d');
-      if (video.readyState === video.HAVE_ENOUGH_DATA) {
+      const ctx = canvas?.getContext('2d');
+      if (video?.readyState === video.HAVE_ENOUGH_DATA) {
         canvas.width = video.videoWidth;
         canvas.height = video.videoHeight;
         ctx.drawImage(video, 0, 0);
@@ -46,7 +34,7 @@ export default function QrScanner({ onScan }) {
     };
 
     startCamera();
-  }, []);
+  }, [onScan]);
 
   return (
     <>
