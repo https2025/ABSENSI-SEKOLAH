@@ -5,7 +5,3 @@
 [build.environment]
   NODE_VERSION = "20"
   NPM_FLAGS = "--version"   # prints npm version for quick debug
-
-npm install react-qr-reader@3.0.0-beta-1   # official beta
-# or, if you prefer hooks:
-npm install @yudiel/react-qr-scanner
