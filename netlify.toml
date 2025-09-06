@@ -1,0 +1,7 @@
+[build]
+  command = "npm ci"
+  publish = ".next"
+
+[build.environment]
+  NODE_VERSION = "20"
+  NPM_FLAGS = "--version"   # prints npm version for quick debug
